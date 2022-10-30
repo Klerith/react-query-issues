@@ -1,0 +1,37 @@
+small {
+    font-size: 1rem;
+    font-weight: lighter;
+}
+
+h3 {
+    font-weight: 300;
+}
+
+.issue {
+    cursor: pointer;
+}
+
+.issue-subinfo {
+    font-size: .7rem;
+    color: grey;
+}
+
+.nav-item {
+    cursor: pointer;
+}
+
+.avatar {
+    width: 35px;
+    border: 2px solid #222529;
+    border-radius: 100%;
+}
+
+.label-picker {
+    cursor: pointer;
+    transition: all .5s;
+}
+
+.label-picker:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: all .5s;
+}
