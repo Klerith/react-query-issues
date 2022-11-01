@@ -28,10 +28,28 @@ h3 {
 
 .label-picker {
     cursor: pointer;
-    transition: all .5s;
+    transition: all .2s;
 }
 
 .label-picker:hover {
     background-color: rgba(255, 255, 255, 0.1);
-    transition: all .5s;
+    transition: all .2s;
+}
+
+.loader {
+    animation: spin-animation 1.5s infinite linear;
+    display: block;
+}
+
+@keyframes spin-animation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(365deg);
+    }
+}
+
+.label-active {
+    background-color: rgba(255, 255, 255, .5);
 }
