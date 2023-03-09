@@ -1,37 +1,52 @@
 small {
-    font-size: 1rem;
-    font-weight: lighter;
+  font-size: 1rem;
+  font-weight: lighter;
 }
 
 h3 {
-    font-weight: 300;
+  font-weight: 300;
 }
 
 .issue {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .issue-subinfo {
-    font-size: .7rem;
-    color: grey;
+  font-size: 0.7rem;
+  color: grey;
 }
 
 .nav-item {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .avatar {
-    width: 35px;
-    border: 2px solid #222529;
-    border-radius: 100%;
+  width: 35px;
+  border: 2px solid #222529;
+  border-radius: 100%;
 }
 
 .label-picker {
-    cursor: pointer;
-    transition: all .5s;
+  cursor: pointer;
+  transition: all 0.5s;
 }
 
 .label-picker:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    transition: all .5s;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: all 0.5s;
+}
+
+.loader {
+  animation: spin-animation 1.5s infinite linear;
+  display: block;
+}
+
+@keyframes spin-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100%{
+    transform: rotate(365deg);
+  }
 }
