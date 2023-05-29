@@ -1,6 +1,8 @@
 import { FiCheckCircle, FiInfo, FiMessageSquare } from "react-icons/fi";
 import { Issue, State } from "../interface";
 import { useNavigate } from "react-router-dom";
+import { useQueryClient } from "@tanstack/react-query";
+import { getIssue, getIssueComments } from "../hooks";
 
 type Props = {
   issue: Issue;
@@ -8,11 +10,30 @@ type Props = {
 
 export const IssueItem: React.FC<Props> = ({ issue }) => {
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
+
+  const prefetchData = async () => {
+    await queryClient.prefetchQuery(["issue", issue.number], () =>
+      getIssue(issue.number)
+    );
+
+    await queryClient.prefetchQuery(["issue", "comments", issue.number], () =>
+      getIssueComments(issue.number)
+    );
+  };
+
+  const presetData = async () => {
+    queryClient.setQueryData(["issue", issue.number], issue, {
+      updatedAt: new Date().getTime() + 10000,
+    });
+  };
 
   return (
     <div
       className="card mb-2 issue"
       onClick={() => navigate(`/issues/issue/${issue.number}`)}
+      // onMouseEnter={prefetchData}
+      onMouseEnter={presetData}
     >
       <div className="card-body d-flex align-items-center">
         {issue.state === State.Open ? (
