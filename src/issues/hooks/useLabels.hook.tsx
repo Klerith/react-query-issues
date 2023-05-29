@@ -4,13 +4,15 @@ import { Label } from "../interface/label-response";
 import { sleep } from "../../helpers/sleep";
 
 const getLabelsFromGithub = async (): Promise<Label[]> => {
-  const { data } = await githubApi.get<Label[]>("/labels");
+  const { data } = await githubApi.get<Label[]>("/labels", {
+    headers: { Authorization: null },
+  });
 
   await sleep(2);
   return data;
 };
 export const useLabels = () => {
-  const labelsQuery = useQuery(["labelsCache"], getLabelsFromGithub, {
+  const labelsQuery = useQuery(["labels"], getLabelsFromGithub, {
     staleTime: 1000 * 60 * 60,
     placeholderData: [
       {
