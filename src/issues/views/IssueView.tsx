@@ -11,11 +11,15 @@ export const IssueView = () => {
     queryComments: { data: comments, isLoading: isLoadingComments },
   } = useIssue(Number(id));
 
-  return isLoadingIssue ? (
-    <LoadingIcon />
-  ) : error ? (
-    <Navigate to={"/"} />
-  ) : (
+  if (isLoadingIssue) {
+    return <LoadingIcon />;
+  }
+
+  if (error) {
+    return <Navigate to={"/"} />;
+  }
+
+  return (
     <div className="row mb-5">
       <div className="col-12 mb-3">
         <Link to="./issues/list">Go Back</Link>
