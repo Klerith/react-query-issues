@@ -1,5 +1,5 @@
-import { useLabels } from "../hooks/useLabels.hook";
-import { LoadingIcon } from "../../shared/components/LoadingIcon";
+import { LoadingIcon } from "../../shared";
+import { useLabels } from "../hooks";
 
 interface Props {
   selectedLabels: string[];
@@ -7,7 +7,7 @@ interface Props {
 }
 
 export const LabelPicker: React.FC<Props> = ({ selectedLabels, onChange }) => {
-  const { data, error, isLoading } = useLabels();
+  const { data, isLoading } = useLabels();
 
   if (isLoading) {
     return <LoadingIcon />;
